@@ -1,0 +1,136 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>{{ showing.event }}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/room.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="title">
+    <h2>{{showing.event}}</h2>
+    </div>
+   <div class="title">
+    <h2>Horaire : le {{resume_date}} à {{resume_heure}}</h2>
+    </div>
+<div class="title">
+    <h3>{{room.name}}</h3>
+  </div>
+
+  <div id="seats-container" class='seats-container'>
+    <div id="seats" class="seats">
+    </div>
+  </div>
+  <br>
+  <div id="button-container" class="button-container">
+    <input type="button" class="val" onclick="submit()" value="Valider mes sièges" />
+    <input type="button" class="cancel" onclick="location.href='#top';" value='Retour' />
+  </div>
+
+  <script type="text/javascript">
+
+    const selection_map = new Map();
+
+    function seat_click(evt)
+    {
+      let seat_id = evt.currentTarget.id;
+      let element = document.getElementById(seat_id);
+      let selected = selection_map.get(seat_id);
+
+      if (selected == null)
+      {
+        selection_map.set(seat_id, "selected");
+        element.classList.remove("seat-container");
+        element.classList.add("seat-container-selected");
+      }
+      else
+      {
+        selection_map.delete(seat_id);
+        element.classList.remove("seat-container-selected");
+        element.classList.add("seat-container");
+      }
+    }
+
+    function submit(evt)
+    {
+      const seat_array = Array.from(selection_map.keys());
+      const identifiers_as_string = seat_array.join(",");
+
+      // Change URL
+      window.location.href=`/showing/{{showing.id}}/room/{{room.id}}/selection/${identifiers_as_string}`;
+
+    }
+
+  // data example
+  /*const data = {
+      A1: {
+        id: "A1",
+        x: 100,
+        y: 100,
+        available: true
+      },
+      A2: {
+        id: "A2",
+        x: 100,
+        y: 100,
+        available: false
+      },
+    };*/
+
+    // Populate data on the server side with django
+    const data={
+      {% if seats %}
+      {% for seat, available in seats %}
+      {{seat.identifier}}: {
+        id: "{{seat.identifier}}",
+        x: {{seat.x}},
+        y: {{seat.y}},
+        available: {{available|yesno:"true,false" }},
+      },
+      {% endfor %}
+      {% endif %}
+    };
+
+    // Build path to icon
+    const icon_path = "{% static "seats/icons/seat.png" %}";
+
+    // Iterate over data like a (key, value) dictionary 
+    for (const [seat_id, seat_data] of Object.entries(data))
+    {
+      let div = document.createElement('div');
+      div.id = seat_id;
+
+      let available = seat_data.available;
+
+      if (available === true)
+      {
+        div.classList.add("seat-container");
+        div.addEventListener("click", seat_click);
+      }
+      else
+      {
+        div.classList.add("seat-container-unavailable");
+      }
+
+      div.style.left = String(seat_data.y).concat('px');
+      div.style.top = String(seat_data.x).concat('px');
+
+      let img = document.createElement('img');
+      img.src = icon_path;
+      img.id = 'img_'.concat(seat_id);
+      img.classList.add("seat");
+
+      let span = document.createElement("span")     
+      let text = document.createTextNode(seat_id);
+      span.appendChild(text)
+      span.classList.add("seat-label");
+
+      document.getElementById('seats').appendChild(div);
+      document.getElementById(div.id).appendChild(img);
+      document.getElementById(div.id).appendChild(span);
+    }
+
+  </script>
+
+{% endblock %}

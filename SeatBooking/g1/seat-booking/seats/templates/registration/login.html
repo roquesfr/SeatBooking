@@ -1,0 +1,43 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+{% block head %}
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">-->
+<title>Connexion</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'seats/stylecarte.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Vous n'avez pas de compte pour accéder au contenu.
+Veuillez vous inscrire.</p>
+{% else %}
+<p>Veuillez vous connecter.</p>
+{% endif %}
+{% endif %}
+
+<form method="post">
+{% csrf_token %}
+<table class="login">
+<tr>
+<td>{{ form.username.label_tag }}</td>
+<td>{{ form.username }}</td>
+</tr>
+<tr>
+<td>{{ form.password.label_tag }}</td>
+<td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="Connexion">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+<br>
+<div>
+ <a href="{% url 'seats:inscription' %}">Créer un compte </a>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Nouvelle séance</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Nouvelle séance</h2>
+<p> Veuillez remplir ces champs pour créer une nouvelle séance</p><br>
+  <form action="" class="event-selection-form" method="post">
+    {% csrf_token %}
+
+
+    {{ form.as_p}}
+
+    <div class="button_new_showing">
+         <button type="submit">Valider</button>
+         <button type="reset">Réinitialiser</button>
+    </div>
+
+  </form>
+{% endblock %}

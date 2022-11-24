@@ -1,0 +1,41 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Réservation de sièges</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/seats.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="title">
+    <h1>Votre réservation est enregistrée</h1>
+    <h3>Un mail de confirmation vous a été envoyé</h3>
+  </div>
+
+
+  <div class="seat-info-container">
+
+      {% if seat_id_list %}
+      <p>Film : {{ resume_film }}</p>
+      <p>Salle : {{ resume_salle }}</p>
+      <p>Date : {{ resume_date }}</p>
+      <p>Heure : {{ resume_heure }}</p>
+      <p><tr> Siège(s) :
+      {% for seat_id in seat_id_list %}
+
+        <td>{{seat_id}}</td>
+
+      {% endfor %}
+      </tr></p>
+
+      {% endif %}
+
+  </div>
+
+  <div class="links">
+    <a href="/showing/{{showing_id}}/"> Retour </a>
+  </div>
+
+
+{% endblock %}

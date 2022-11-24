@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'seats/base.css' %}">-->
+    {% block head %}
+    {% endblock %}
+
+  </head>
+  <body>
+       <div class="header">
+         <div class ="header-right">
+             <a class="active" href ="/">Accueil</a>
+              {% if request.user.is_staff %}
+
+            <a href="{% url 'seats:staff' %}">STAFF</a>
+          {% endif %}
+
+            <a href="{% url 'seats:index' %}">Sélectionner un film</a>
+            <a href="{% url 'seats:profil' %}">Mon Profil</a>
+          <!-- <a href="{% url 'seats:new_event' %}">Ajouter un film </a>
+           <a href="{% url 'seats:new_showing' %}">Ajouter une séance </a>-->
+           <a href="/accounts/logout/"> Déconnexion </a>
+         </div>
+           <img id="logo" src="{% static 'seats/images/logo4.png' %}">
+       </div>
+
+       <main>
+
+      <!--<nav>
+         <ul>
+            <li><a href="{% url 'seats:new_event' %}">Vous voulez ajouter un film?</a></li>
+           <li><a href="{% url 'seats:new_showing' %}">Une séance supplémentaire à ajouter?</a></li>
+         </ul>
+      </nav>-->
+
+
+
+    <div class="content-container">
+      <div class="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+</html>

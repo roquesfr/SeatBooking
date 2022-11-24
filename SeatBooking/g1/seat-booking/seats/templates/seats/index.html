@@ -1,0 +1,32 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+
+<title>Seats de la mort</title>
+
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'seats/stylecarte.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="cardbox">
+    {% for event in events %}
+        <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="event" value="{{ event.id }}" />
+        <button class="card" type="submit">
+
+        {{ event.title }}<br>
+        -<br>
+        {{ event.director }}<br>
+        -<br>
+        {{ event.year }}<br>
+        </button><br>
+    </form>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Mon profil</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!--  <form action="" class="event-selection-form" method="post">-->
+
+<!--    {{event_add_form.as_p}}-->
+
+<h2>Mes informations personnelles</h2>
+<p> Veuillez remplir ces champs pour modifier vos informations</p><br>
+
+ <form action="" method="post">
+        {% csrf_token %}
+<table class="new_profil">
+       {% for i, j in el_zipo %}
+
+     <tr><td>{{ i }}</td><td>{{ j }}</td></tr>
+     {% endfor %}
+</table>
+<br>
+<div class="button_profil">
+     <button type="submit">Changer mes données</button></div>
+
+  </form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Nouveau film</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!--  <form action="" class="event-selection-form" method="post">-->
+
+<!--    {{event_add_form.as_p}}-->
+<h2>Nouveau film</h2>
+<p> Veuillez remplir ces champs pour créer un nouveau film</p><br>
+
+     <form action="{% url 'seats:new_event' %}" method="post">
+        {% csrf_token %}
+<table class="new_event">
+       {% for i, j in el_zipo %}
+
+     <tr><td>{{ i }}</td><td>{{ j }}</td></tr>
+     {% endfor %}
+</table>
+<br>
+<div class="button_new_event">
+        <button type="submit">Valider</button>
+    <button type="reset">Réinitialiser</button>
+</div>
+
+  </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+.title {
+  margin: auto;
+  text-align: center;
+
+}
+
+.links {
+  flex-grow:0;
+  flex-shrink:0;
+  margin: 5px;
+}
+
+.seat-info-container {
+  border: 5px solid black;
+}
+
+.seat-info {
+  text-align: left;
+  padding-bottom: 10px;
+}
+

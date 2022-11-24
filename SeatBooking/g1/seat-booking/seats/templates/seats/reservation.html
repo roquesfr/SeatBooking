@@ -1,0 +1,41 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Réservations de places</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="reservation">Mes films à venir</h1>
+<table class="table_reservation">
+  <tr><th>Titre</th><th>Date</th><th>Salle</th><th>Siège(s)</th></tr>
+  {% for i, j, k, l in le_zip_turfu %}
+  <tr>
+      <td>{{i}}</td>
+      <td>{{j}}</td>
+      <td>{{k}}</td>
+      <td>{{l}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+<h1 class="reservation">Films déjà visionnés</h1>
+<table class="table_reservation">
+  <tr><th>Titre</th><th>Date</th><th>Salle</th><th>Siège(s)</th></tr>
+  {% for i, j, k, l in le_zip %}
+  <tr>
+      <td>{{i}}</td>
+      <td>{{j}}</td>
+      <td>{{k}}</td>
+      <td>{{l}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<br><br><br>
+
+
+
+{% endblock %}

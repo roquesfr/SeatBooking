@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+
+      <link rel="icon" type="image/png" href="{% static 'seats/images/'%}favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'seats/base.css' %}">
+
+
+    {% block head %}
+    {% endblock %}
+
+  </head>
+  <body id="top">
+
+    <div class="nav" id="navbar">
+        <div>
+            <h1>
+            <a href="/">
+                <img class="logo" src="{% static 'seats/images/logo.png' %}" alt="">
+            </a>
+            </h1>
+        </div>
+            <ul>
+                <li>
+                    <a class="active" href ="/">Accueil</a>
+                </li>
+                <li>
+                {% if request.user.is_active %}
+                {% if request.user.is_staff %}
+                    <a href="{% url 'seats:staff' %}">STAFF</a>
+                {% endif %}
+                </li>
+                <li>
+                     <a href ="{% url 'seats:reservation' %}">Mes réservations</a>
+                </li>
+
+                <li>
+                     <a href="{% url 'seats:profil' %}">Mon Profil</a>
+                </li>
+                <li >
+                <a href="/accounts/logout/"> Déconnexion </a>
+
+                </li>
+                 {% else %}
+             <a href="/accounts/login">Se connecter</a>
+            {% endif %}
+
+            </ul>
+</div>
+
+     
+
+    <div class="content-container">
+      <div class="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+
+      </div>
+    </main>
+    <footer class="footer">
+        <p>Le cinéma Seats de la mort<br>
+        123 Rue Bidon - Labège 31670<br>
+        Ce site est réalisé dans le cadre d'une formation Python proposée par <a href="https://www.ldnr.fr/">LDNR</a> et d'un travail de groupe.<br>
+        Aucun stagiaire n'a été maltraité durant ce projet, ni travaillé hors des horaires de formations (nuit et week-ends compris)</p>
+    </footer>
+  </body>
+</html>

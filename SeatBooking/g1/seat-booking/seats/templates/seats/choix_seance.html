@@ -1,0 +1,46 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Choix séance</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/stylecarte.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <!--<div class="room-selection-form">
+    <form action="" class="room-selection-form" method="post">
+        {% csrf_token %}
+        {{ room_selection_form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  -->
+
+
+
+    <div class="event-selection-form">
+
+<div class="cardbox">
+    {% for showing in showings %}
+        <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="showing" value="{{ showing.id }}" />
+        <button class="card" type="submit">
+
+        {{ showing.event }}<br>
+        -<br>
+        {{ showing.date }}<br>
+        -<br>
+        {{ showing.room }}<br>
+        </button><br>
+    </form>
+{% endfor %}
+</div>
+        </div>
+
+
+{% endblock %}
+
+
+

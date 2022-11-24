@@ -1,0 +1,196 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.seats-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seats {
+  position: relative;
+  border-style: solid;
+  width: 1200px;
+  height: 800px;
+  overflow:auto;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.seat-container {
+  position: absolute;
+  height: 64px;
+  width: 64px;
+  background-color: none;
+  border-radius: 10px;
+}
+
+.seat-container:hover {
+  background-color: #ADD8E6;
+}
+
+.seat-container-selected {
+  position: absolute;
+  height: 64px;
+  width: 64px;
+  background-color: none;
+  border-radius: 10px;
+  background-color: #90EE90;
+}
+
+.seat-container-unavailable {
+  position: absolute;
+  height: 64px;
+  width: 64px;
+  background-color: #ac1c11;
+  border-radius: 10px;
+}
+
+.seat {
+  height: 100%;
+  width:  100%;
+}
+
+.seat-label {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: medium;
+  color: #ebe9ee
+}
+
+/*body {
+    font-family: Revue, Futura, Goudy, garamond, copper, times roman;
+    background-image: url("images/cinema.jpg");
+    background-size : cover;
+}
+
+a {
+color : bluesky;
+}
+
+a:hover {
+    color: orange;
+    trans
+    transition : 0.6 sec;
+    font-style: italic;
+
+}
+
+.img {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: adjust;
+ background-image : url("images/clap.png");
+ }
+
+*//*autour des boutons input*//*
+ .button-container {
+
+  display: inline-block;
+  background: linear-gradient(to right, yellow 0%, red 50%, yellow 100%);
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.button-container:hover {
+  background-color: #cc00ff;
+  transition : 0.6sec;
+}
+
+input.val {
+    padding: 15px 100px;
+    margin: 10px 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    width: 20%;
+    display: inline-block;
+    background-color: white;
+    border-radius: 20px 0 0 20px;
+    border: 4px double #cccccc;
+    color: #cc00ff;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 100%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    opacity :1;
+}
+
+input.cancel {
+    padding: 15px 100px;
+    margin: 10px 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    width: 20%;
+    display: inline-block;
+    background-color: white;
+    border-radius: 0 20px 20px 0;
+    border: 4px double #cccccc;
+    color: #cc00ff;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 100%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    opacity :1;
+}
+
+input:hover {
+    opacity: 0.8;
+    background: #cc00ff;
+    color:white;
+}*/

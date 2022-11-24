@@ -1,0 +1,11 @@
+{% extends 'seats/base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'seats/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  <p><a href="{% url 'seats:new_event' %}">Ajouter un nouveau film</a></p>
+  <p><a href="{% url 'seats:new_showing' %}">Ajouter une nouvelle séance</a></p>
+{% endblock %}
